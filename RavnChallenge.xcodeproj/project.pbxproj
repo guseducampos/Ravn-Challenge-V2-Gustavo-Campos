@@ -15,7 +15,8 @@
 		284134182557026500089D5C /* RavnChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284134172557026500089D5C /* RavnChallengeUITests.swift */; };
 		2841342A2557087200089D5C /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 284134292557087200089D5C /* Apollo */; };
 		2841344A255710E100089D5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28413449255710E100089D5C /* API.swift */; };
-		284134512557157A00089D5C /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284134502557157A00089D5C /* ApolloClient.swift */; };
+		284134512557157A00089D5C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284134502557157A00089D5C /* NetworkClient.swift */; };
+		28413463255725EB00089D5C /* StarWarsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28413462255725EB00089D5C /* StarWarsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,8 @@
 		2841343D25570B2B00089D5C /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		2841343E25570F9800089D5C /* AllPeople.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AllPeople.graphql; sourceTree = "<group>"; };
 		28413449255710E100089D5C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		284134502557157A00089D5C /* ApolloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClient.swift; sourceTree = "<group>"; };
+		284134502557157A00089D5C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		28413462255725EB00089D5C /* StarWarsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 		284133F92557026400089D5C /* RavnChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				2841344F2557137800089D5C /* ApolloClient */,
+				2841344F2557137800089D5C /* Network */,
 				28413449255710E100089D5C /* API.swift */,
 				2841343D25570B2B00089D5C /* schema.json */,
 				284133FA2557026400089D5C /* RavnChallengeApp.swift */,
@@ -142,12 +144,21 @@
 			path = RavnChallengeUITests;
 			sourceTree = "<group>";
 		};
-		2841344F2557137800089D5C /* ApolloClient */ = {
+		2841344F2557137800089D5C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				284134502557157A00089D5C /* ApolloClient.swift */,
+				284134502557157A00089D5C /* NetworkClient.swift */,
+				2841345E2557255600089D5C /* Services */,
 			);
-			path = ApolloClient;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2841345E2557255600089D5C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				28413462255725EB00089D5C /* StarWarsService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,8 +320,9 @@
 			files = (
 				284133FD2557026400089D5C /* ContentView.swift in Sources */,
 				2841344A255710E100089D5C /* API.swift in Sources */,
+				28413463255725EB00089D5C /* StarWarsService.swift in Sources */,
 				284133FB2557026400089D5C /* RavnChallengeApp.swift in Sources */,
-				284134512557157A00089D5C /* ApolloClient.swift in Sources */,
+				284134512557157A00089D5C /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
