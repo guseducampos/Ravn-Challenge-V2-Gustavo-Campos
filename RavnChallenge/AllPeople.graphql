@@ -1,0 +1,26 @@
+query StarWars($first:Int, $after:String) {
+  allPeople(first:$first, after:$after) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    people {
+      id
+      name
+      eyeColor
+      hairColor
+      skinColor
+      birthYear
+      vehicleConnection {
+        vehicles {
+          id
+          name
+        }
+      }
+      species {
+        name
+      }
+    }
+  }
+}
+
