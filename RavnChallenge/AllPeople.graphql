@@ -1,9 +1,11 @@
-query StarWars($cursor:String) {
-  allPeople(after:$cursor) {
+query StarWars($first:Int, $after:String) {
+  allPeople(first:$first, after:$after) {
     pageInfo {
       hasNextPage
+      endCursor
     }
     people {
+      id
       name
       eyeColor
       hairColor

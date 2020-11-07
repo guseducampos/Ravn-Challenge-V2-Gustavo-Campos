@@ -8,15 +8,17 @@ public final class StarWarsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query StarWars($cursor: String) {
-      allPeople(after: $cursor) {
+    query StarWars($first: Int, $after: String) {
+      allPeople(first: $first, after: $after) {
         __typename
         pageInfo {
           __typename
           hasNextPage
+          endCursor
         }
         people {
           __typename
+          id
           name
           eyeColor
           hairColor
@@ -41,14 +43,16 @@ public final class StarWarsQuery: GraphQLQuery {
 
   public let operationName: String = "StarWars"
 
-  public var cursor: String?
+  public var first: Int?
+  public var after: String?
 
-  public init(cursor: String? = nil) {
-    self.cursor = cursor
+  public init(first: Int? = nil, after: String? = nil) {
+    self.first = first
+    self.after = after
   }
 
   public var variables: GraphQLMap? {
-    return ["cursor": cursor]
+    return ["first": first, "after": after]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -56,7 +60,7 @@ public final class StarWarsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("allPeople", arguments: ["after": GraphQLVariable("cursor")], type: .object(AllPerson.selections)),
+        GraphQLField("allPeople", arguments: ["first": GraphQLVariable("first"), "after": GraphQLVariable("after")], type: .object(AllPerson.selections)),
       ]
     }
 
@@ -141,6 +145,7 @@ public final class StarWarsQuery: GraphQLQuery {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("hasNextPage", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("endCursor", type: .scalar(String.self)),
           ]
         }
 
@@ -150,8 +155,8 @@ public final class StarWarsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(hasNextPage: Bool) {
-          self.init(unsafeResultMap: ["__typename": "PageInfo", "hasNextPage": hasNextPage])
+        public init(hasNextPage: Bool, endCursor: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "PageInfo", "hasNextPage": hasNextPage, "endCursor": endCursor])
         }
 
         public var __typename: String {
@@ -172,6 +177,16 @@ public final class StarWarsQuery: GraphQLQuery {
             resultMap.updateValue(newValue, forKey: "hasNextPage")
           }
         }
+
+        /// When paginating forwards, the cursor to continue.
+        public var endCursor: String? {
+          get {
+            return resultMap["endCursor"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "endCursor")
+          }
+        }
       }
 
       public struct Person: GraphQLSelectionSet {
@@ -180,6 +195,7 @@ public final class StarWarsQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .scalar(String.self)),
             GraphQLField("eyeColor", type: .scalar(String.self)),
             GraphQLField("hairColor", type: .scalar(String.self)),
@@ -196,8 +212,8 @@ public final class StarWarsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(name: String? = nil, eyeColor: String? = nil, hairColor: String? = nil, skinColor: String? = nil, birthYear: String? = nil, vehicleConnection: VehicleConnection? = nil, species: Species? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Person", "name": name, "eyeColor": eyeColor, "hairColor": hairColor, "skinColor": skinColor, "birthYear": birthYear, "vehicleConnection": vehicleConnection.flatMap { (value: VehicleConnection) -> ResultMap in value.resultMap }, "species": species.flatMap { (value: Species) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID, name: String? = nil, eyeColor: String? = nil, hairColor: String? = nil, skinColor: String? = nil, birthYear: String? = nil, vehicleConnection: VehicleConnection? = nil, species: Species? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Person", "id": id, "name": name, "eyeColor": eyeColor, "hairColor": hairColor, "skinColor": skinColor, "birthYear": birthYear, "vehicleConnection": vehicleConnection.flatMap { (value: VehicleConnection) -> ResultMap in value.resultMap }, "species": species.flatMap { (value: Species) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -206,6 +222,16 @@ public final class StarWarsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The ID of an object
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 
