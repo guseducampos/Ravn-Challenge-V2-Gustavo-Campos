@@ -1,0 +1,24 @@
+query StarWars($cursor:String) {
+  allPeople(after:$cursor) {
+    pageInfo {
+      hasNextPage
+    }
+    people {
+      name
+      eyeColor
+      hairColor
+      skinColor
+      birthYear
+      vehicleConnection {
+        vehicles {
+          id
+          name
+        }
+      }
+      species {
+        name
+      }
+    }
+  }
+}
+
