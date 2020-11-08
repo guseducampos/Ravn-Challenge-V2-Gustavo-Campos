@@ -17,6 +17,8 @@
 		2841344A255710E100089D5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28413449255710E100089D5C /* API.swift */; };
 		284134512557157A00089D5C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284134502557157A00089D5C /* NetworkClient.swift */; };
 		28413463255725EB00089D5C /* StarWarsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28413462255725EB00089D5C /* StarWarsService.swift */; };
+		2841349425576C5D00089D5C /* PeopeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841349325576C5D00089D5C /* PeopeListViewModel.swift */; };
+		2841349925578E4700089D5C /* PeopleListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841349825578E4700089D5C /* PeopleListViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		28413449255710E100089D5C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		284134502557157A00089D5C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		28413462255725EB00089D5C /* StarWarsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsService.swift; sourceTree = "<group>"; };
+		2841349325576C5D00089D5C /* PeopeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopeListViewModel.swift; sourceTree = "<group>"; };
+		2841349825578E4700089D5C /* PeopleListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		284133F92557026400089D5C /* RavnChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				2841348E255765EA00089D5C /* Modules */,
 				2841344F2557137800089D5C /* Network */,
 				28413449255710E100089D5C /* API.swift */,
 				2841343D25570B2B00089D5C /* schema.json */,
@@ -131,6 +136,7 @@
 			children = (
 				2841340C2557026500089D5C /* RavnChallengeTests.swift */,
 				2841340E2557026500089D5C /* Info.plist */,
+				2841349825578E4700089D5C /* PeopleListViewModelTest.swift */,
 			);
 			path = RavnChallengeTests;
 			sourceTree = "<group>";
@@ -159,6 +165,22 @@
 				28413462255725EB00089D5C /* StarWarsService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2841348E255765EA00089D5C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2841348F255765FC00089D5C /* PeopleList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		2841348F255765FC00089D5C /* PeopleList */ = {
+			isa = PBXGroup;
+			children = (
+				2841349325576C5D00089D5C /* PeopeListViewModel.swift */,
+			);
+			path = PeopleList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +344,7 @@
 				2841344A255710E100089D5C /* API.swift in Sources */,
 				28413463255725EB00089D5C /* StarWarsService.swift in Sources */,
 				284133FB2557026400089D5C /* RavnChallengeApp.swift in Sources */,
+				2841349425576C5D00089D5C /* PeopeListViewModel.swift in Sources */,
 				284134512557157A00089D5C /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2841340D2557026500089D5C /* RavnChallengeTests.swift in Sources */,
+				2841349925578E4700089D5C /* PeopleListViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

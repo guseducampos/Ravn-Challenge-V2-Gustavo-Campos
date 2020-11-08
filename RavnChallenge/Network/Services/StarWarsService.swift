@@ -13,8 +13,19 @@ typealias Person = StarWarsQuery.Data.AllPerson.Person
 typealias PageInfo = StarWarsQuery.Data.AllPerson.PageInfo
 
 struct StarWarsResponse {
-    let people: [Person]
-    let pageInfo: PageInfo
+    var people: [Person]
+    var pageInfo: PageInfo
+}
+
+struct StarWarsClient {
+    var people: (StarWarsQuery) -> AnyPublisher<StarWarsResponse, Error>
+}
+
+extension StarWarsClient {
+    static var live: Self {
+        let service = StarWarsService(client: NetworkClient().fetch(query:))
+        return .init(people: service.getAllPeople(query:))
+    }
 }
 
 struct StarWarsService {
