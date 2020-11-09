@@ -21,6 +21,11 @@ public final class StarWarsQuery: GraphQLQuery {
           id
           name
           eyeColor
+          homeworld {
+            __typename
+            id
+            name
+          }
           hairColor
           skinColor
           birthYear
@@ -34,6 +39,7 @@ public final class StarWarsQuery: GraphQLQuery {
           }
           species {
             __typename
+            id
             name
           }
         }
@@ -198,6 +204,7 @@ public final class StarWarsQuery: GraphQLQuery {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .scalar(String.self)),
             GraphQLField("eyeColor", type: .scalar(String.self)),
+            GraphQLField("homeworld", type: .object(Homeworld.selections)),
             GraphQLField("hairColor", type: .scalar(String.self)),
             GraphQLField("skinColor", type: .scalar(String.self)),
             GraphQLField("birthYear", type: .scalar(String.self)),
@@ -212,8 +219,8 @@ public final class StarWarsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, name: String? = nil, eyeColor: String? = nil, hairColor: String? = nil, skinColor: String? = nil, birthYear: String? = nil, vehicleConnection: VehicleConnection? = nil, species: Species? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Person", "id": id, "name": name, "eyeColor": eyeColor, "hairColor": hairColor, "skinColor": skinColor, "birthYear": birthYear, "vehicleConnection": vehicleConnection.flatMap { (value: VehicleConnection) -> ResultMap in value.resultMap }, "species": species.flatMap { (value: Species) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID, name: String? = nil, eyeColor: String? = nil, homeworld: Homeworld? = nil, hairColor: String? = nil, skinColor: String? = nil, birthYear: String? = nil, vehicleConnection: VehicleConnection? = nil, species: Species? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Person", "id": id, "name": name, "eyeColor": eyeColor, "homeworld": homeworld.flatMap { (value: Homeworld) -> ResultMap in value.resultMap }, "hairColor": hairColor, "skinColor": skinColor, "birthYear": birthYear, "vehicleConnection": vehicleConnection.flatMap { (value: VehicleConnection) -> ResultMap in value.resultMap }, "species": species.flatMap { (value: Species) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -253,6 +260,16 @@ public final class StarWarsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "eyeColor")
+          }
+        }
+
+        /// A planet that this person was born on or inhabits.
+        public var homeworld: Homeworld? {
+          get {
+            return (resultMap["homeworld"] as? ResultMap).flatMap { Homeworld(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "homeworld")
           }
         }
 
@@ -305,6 +322,57 @@ public final class StarWarsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue?.resultMap, forKey: "species")
+          }
+        }
+
+        public struct Homeworld: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Planet"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("name", type: .scalar(String.self)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, name: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Planet", "id": id, "name": name])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// The ID of an object
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          /// The name of this planet.
+          public var name: String? {
+            get {
+              return resultMap["name"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "name")
+            }
           }
         }
 
@@ -411,6 +479,7 @@ public final class StarWarsQuery: GraphQLQuery {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
               GraphQLField("name", type: .scalar(String.self)),
             ]
           }
@@ -421,8 +490,8 @@ public final class StarWarsQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(name: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Species", "name": name])
+          public init(id: GraphQLID, name: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Species", "id": id, "name": name])
           }
 
           public var __typename: String {
@@ -431,6 +500,16 @@ public final class StarWarsQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// The ID of an object
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
             }
           }
 

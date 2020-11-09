@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		284133FB2557026400089D5C /* RavnChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284133FA2557026400089D5C /* RavnChallengeApp.swift */; };
-		284133FD2557026400089D5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284133FC2557026400089D5C /* ContentView.swift */; };
 		284133FF2557026500089D5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 284133FE2557026500089D5C /* Assets.xcassets */; };
 		284134022557026500089D5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 284134012557026500089D5C /* Preview Assets.xcassets */; };
 		2841340D2557026500089D5C /* RavnChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841340C2557026500089D5C /* RavnChallengeTests.swift */; };
@@ -19,6 +18,10 @@
 		28413463255725EB00089D5C /* StarWarsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28413462255725EB00089D5C /* StarWarsService.swift */; };
 		2841349425576C5D00089D5C /* PeopeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841349325576C5D00089D5C /* PeopeListViewModel.swift */; };
 		2841349925578E4700089D5C /* PeopleListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841349825578E4700089D5C /* PeopleListViewModelTest.swift */; };
+		284F3CED255865F9006AD4DB /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F3CEC255865F9006AD4DB /* PeopleListView.swift */; };
+		285A4FF425587A8C008EB321 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A4FF325587A8C008EB321 /* NavigationBarModifier.swift */; };
+		285A4FFA2558A49A008EB321 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A4FF92558A49A008EB321 /* Colors.swift */; };
+		285A50002558AA5A008EB321 /* Person+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A4FFF2558AA5A008EB321 /* Person+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,6 @@
 /* Begin PBXFileReference section */
 		284133F72557026400089D5C /* RavnChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RavnChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		284133FA2557026400089D5C /* RavnChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RavnChallengeApp.swift; sourceTree = "<group>"; };
-		284133FC2557026400089D5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		284133FE2557026500089D5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		284134012557026500089D5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		284134032557026500089D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +60,10 @@
 		28413462255725EB00089D5C /* StarWarsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsService.swift; sourceTree = "<group>"; };
 		2841349325576C5D00089D5C /* PeopeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopeListViewModel.swift; sourceTree = "<group>"; };
 		2841349825578E4700089D5C /* PeopleListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListViewModelTest.swift; sourceTree = "<group>"; };
+		284F3CEC255865F9006AD4DB /* PeopleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListView.swift; sourceTree = "<group>"; };
+		285A4FF325587A8C008EB321 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+		285A4FF92558A49A008EB321 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		285A4FFF2558AA5A008EB321 /* Person+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,12 +115,14 @@
 		284133F92557026400089D5C /* RavnChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				285A4FFE2558AA4C008EB321 /* Extensions */,
+				285A4FF82558A45E008EB321 /* Utils */,
+				285A4FF225587A66008EB321 /* Modifiers */,
 				2841348E255765EA00089D5C /* Modules */,
 				2841344F2557137800089D5C /* Network */,
 				28413449255710E100089D5C /* API.swift */,
 				2841343D25570B2B00089D5C /* schema.json */,
 				284133FA2557026400089D5C /* RavnChallengeApp.swift */,
-				284133FC2557026400089D5C /* ContentView.swift */,
 				284133FE2557026500089D5C /* Assets.xcassets */,
 				284134032557026500089D5C /* Info.plist */,
 				284134002557026500089D5C /* Preview Content */,
@@ -179,8 +187,33 @@
 			isa = PBXGroup;
 			children = (
 				2841349325576C5D00089D5C /* PeopeListViewModel.swift */,
+				284F3CEC255865F9006AD4DB /* PeopleListView.swift */,
 			);
 			path = PeopleList;
+			sourceTree = "<group>";
+		};
+		285A4FF225587A66008EB321 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				285A4FF325587A8C008EB321 /* NavigationBarModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		285A4FF82558A45E008EB321 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				285A4FF92558A49A008EB321 /* Colors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		285A4FFE2558AA4C008EB321 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				285A4FFF2558AA5A008EB321 /* Person+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,7 +373,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				284133FD2557026400089D5C /* ContentView.swift in Sources */,
+				285A4FFA2558A49A008EB321 /* Colors.swift in Sources */,
+				285A50002558AA5A008EB321 /* Person+Extension.swift in Sources */,
+				284F3CED255865F9006AD4DB /* PeopleListView.swift in Sources */,
+				285A4FF425587A8C008EB321 /* NavigationBarModifier.swift in Sources */,
 				2841344A255710E100089D5C /* API.swift in Sources */,
 				28413463255725EB00089D5C /* StarWarsService.swift in Sources */,
 				284133FB2557026400089D5C /* RavnChallengeApp.swift in Sources */,
