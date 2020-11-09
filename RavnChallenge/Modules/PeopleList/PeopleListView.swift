@@ -16,7 +16,7 @@ struct PeopleListView: View {
                 LazyVStack {
                     ForEach(viewModel.state.response.people,
                             id: \.id) { person in
-                        NavigationLink(destination: Text("Hello")) {
+                        NavigationLink(destination: PersonDetailView(person: person)) {
                             VStack {
                                 PeopleView(person: person)
                                     .onAppear {
@@ -34,7 +34,7 @@ struct PeopleListView: View {
             .modifier(
                 NavigationBarModifier(
                         titleColor: .white,
-                        backgroundColor: UIColor(named: Colors.RavnBlack) ?? .black)
+                        backgroundColor: UIColor(named: Colors.ravnBlack) ?? .black)
             )
             .onAppear {
                 viewModel.fetchPeople()
@@ -62,7 +62,7 @@ struct PeopleView: View {
                     .font(.system(size: 17, weight: .bold, design: .default))
 
                 Text(person.origin)
-                    .foregroundColor(Color(Colors.LightText))
+                    .foregroundColor(Color(Colors.lightText))
                     .font(.system(size: 14))
             }
 
@@ -82,7 +82,7 @@ struct FailedView: View {
     var body: some View {
         if failed {
             Text("Failed to Load Data")
-                .foregroundColor(Color(Colors.EmphasisText))
+                .foregroundColor(Color(Colors.emphasisText))
                 .font(.system(size: 17, weight: .bold))
         }
     }
@@ -96,7 +96,7 @@ struct LoadingView: View {
             HStack(spacing: 10) {
                 ProgressView()
                 Text("Loading")
-                    .foregroundColor(Color(Colors.LightText))
+                    .foregroundColor(Color(Colors.lightText))
                     .font(.system(size: 17, weight: .bold))
             }
         }

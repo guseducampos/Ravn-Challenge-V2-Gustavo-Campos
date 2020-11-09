@@ -22,6 +22,7 @@
 		285A4FF425587A8C008EB321 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A4FF325587A8C008EB321 /* NavigationBarModifier.swift */; };
 		285A4FFA2558A49A008EB321 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A4FF92558A49A008EB321 /* Colors.swift */; };
 		285A50002558AA5A008EB321 /* Person+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A4FFF2558AA5A008EB321 /* Person+Extension.swift */; };
+		28DC0AF62558C424004E2568 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC0AF52558C424004E2568 /* PersonDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		285A4FF325587A8C008EB321 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		285A4FF92558A49A008EB321 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		285A4FFF2558AA5A008EB321 /* Person+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+Extension.swift"; sourceTree = "<group>"; };
+		28DC0AF52558C424004E2568 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				2841348F255765FC00089D5C /* PeopleList */,
+				28DC0AF42558C357004E2568 /* PeopleDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -214,6 +217,14 @@
 				285A4FFF2558AA5A008EB321 /* Person+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		28DC0AF42558C357004E2568 /* PeopleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				28DC0AF52558C424004E2568 /* PersonDetailView.swift */,
+			);
+			path = PeopleDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +388,7 @@
 				285A50002558AA5A008EB321 /* Person+Extension.swift in Sources */,
 				284F3CED255865F9006AD4DB /* PeopleListView.swift in Sources */,
 				285A4FF425587A8C008EB321 /* NavigationBarModifier.swift in Sources */,
+				28DC0AF62558C424004E2568 /* PersonDetailView.swift in Sources */,
 				2841344A255710E100089D5C /* API.swift in Sources */,
 				28413463255725EB00089D5C /* StarWarsService.swift in Sources */,
 				284133FB2557026400089D5C /* RavnChallengeApp.swift in Sources */,
