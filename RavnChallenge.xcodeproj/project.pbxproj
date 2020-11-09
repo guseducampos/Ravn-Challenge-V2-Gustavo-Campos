@@ -122,13 +122,10 @@
 				285A4FF225587A66008EB321 /* Modifiers */,
 				2841348E255765EA00089D5C /* Modules */,
 				2841344F2557137800089D5C /* Network */,
-				28413449255710E100089D5C /* API.swift */,
-				2841343D25570B2B00089D5C /* schema.json */,
 				284133FA2557026400089D5C /* RavnChallengeApp.swift */,
 				284133FE2557026500089D5C /* Assets.xcassets */,
 				284134032557026500089D5C /* Info.plist */,
 				284134002557026500089D5C /* Preview Content */,
-				2841343E25570F9800089D5C /* AllPeople.graphql */,
 			);
 			path = RavnChallenge;
 			sourceTree = "<group>";
@@ -163,6 +160,7 @@
 		2841344F2557137800089D5C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				28DC0AFD2558F1CD004E2568 /* GraphQL */,
 				284134502557157A00089D5C /* NetworkClient.swift */,
 				2841345E2557255600089D5C /* Services */,
 			);
@@ -225,6 +223,16 @@
 				28DC0AF52558C424004E2568 /* PersonDetailView.swift */,
 			);
 			path = PeopleDetail;
+			sourceTree = "<group>";
+		};
+		28DC0AFD2558F1CD004E2568 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				2841343E25570F9800089D5C /* AllPeople.graphql */,
+				2841343D25570B2B00089D5C /* schema.json */,
+				28413449255710E100089D5C /* API.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://swapi-graphql.netlify.app/.netlify/functions/index\"\n";
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"Network/GraphQL/schema.json\" API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://swapi-graphql.netlify.app/.netlify/functions/index\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
