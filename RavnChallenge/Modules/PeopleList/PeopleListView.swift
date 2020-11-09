@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PeopleListView: View {
-  @StateObject var viewModel = PeopleListViewModel(starWarsClient: .live)
+    @ObservedObject var viewModel: PeopleListViewModel
 
     var body: some View {
         NavigationView {
@@ -46,7 +46,13 @@ struct PeopleListView: View {
 struct PeopleListView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PeopleListView()
+            PeopleListView(
+                viewModel: .init(starWarsClient: .happyPath)
+            )
+
+            PeopleListView(
+                viewModel: .init(starWarsClient: .failedClient)
+            )
         }
     }
 }
