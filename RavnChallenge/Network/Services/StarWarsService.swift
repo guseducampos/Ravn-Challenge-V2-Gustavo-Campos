@@ -26,6 +26,31 @@ extension StarWarsClient {
         let service = StarWarsService(client: NetworkClient().fetch(query:))
         return .init(people: service.getAllPeople(query:))
     }
+
+    static var happyPath: Self {
+        .init(people: { _ in
+            Just(StarWarsResponse(people: [
+                .init(id: "1",
+                      name: "Luke",
+                      eyeColor: "Brown",
+                      homeworld: .init(id: "1", name: "Tatooine"),
+                      hairColor: "Gray",
+                      skinColor: "Green"
+                )
+            ],
+                pageInfo: .init(hasNextPage: false)
+                )
+            ).setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+        })
+    }
+
+    static var failedClient: Self {
+        .init(people: { _ in
+            Fail(error: NSError())
+                .eraseToAnyPublisher()
+        })
+    }
 }
 
 struct StarWarsService {
