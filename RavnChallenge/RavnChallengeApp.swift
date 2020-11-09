@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct RavnChallengeApp: App {
+    @StateObject var viewModel = PeopleListViewModel(starWarsClient: .live)
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PeopleListView(viewModel: viewModel)
         }
     }
 }
