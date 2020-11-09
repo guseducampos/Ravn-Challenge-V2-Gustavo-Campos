@@ -8,6 +8,10 @@ query StarWars($first:Int, $after:String) {
       id
       name
       eyeColor
+      homeworld {
+        id
+        name
+      }
       hairColor
       skinColor
       birthYear
@@ -18,6 +22,7 @@ query StarWars($first:Int, $after:String) {
         }
       }
       species {
+        id
         name
       }
     }
